@@ -96,7 +96,7 @@ function storedData(){
 }
 
 //save data to local storage 
-$(".saveBtn").on("click", function(event) {
+$(".submitBtn").on("click", function(event) {
     event.preventDefault();
     var saveIndex = $(this).siblings(".description").children(".future").attr("id");
     myPlanner[saveIndex].reminder = $(this).siblings(".description").children(".future").val();

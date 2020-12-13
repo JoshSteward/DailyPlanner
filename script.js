@@ -73,7 +73,7 @@ var myPlanner = [
 ]
 //save data to local storage
 function saveData(){
-    localStorage.setItem("myPlanner", JSON.stringify("myPlanner"));
+    localStorage.setItem("myPlanner", JSON.stringify(myPlanner));
 }
 console.log(myPlanner);
 
@@ -87,7 +87,7 @@ function  displayEvents() {
 
 //set any existing data to screen 
 function storedData(){
-    var storedInfo = JSON.parse(localStorage.getItem("myPlanner"));
+    var storedInfo = JSON.parse(localStorage.getItem(myPlanner));
     if (storedInfo) {
         myplanner = storedInfo;
     }
@@ -98,8 +98,8 @@ function storedData(){
 //save data to local storage 
 $(".submitBtn").on("click", function(event) {
     event.preventDefault();
-    var saveIndex = $(this).siblings(".description").children(".future").attr("id");
-    myPlanner[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+    var saveIndex = $(this).siblings(".input").children(".future").attr("id");
+    myPlanner[saveIndex].reminder = $(this).siblings(".input").children(".future").val();
     console.log(saveIndex);
     saveData();
     displayEvents();

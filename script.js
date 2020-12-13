@@ -38,35 +38,35 @@ var myPlanner = [
     {
         id: "5",
         hour: "1",
-        time: "1",
+        time: "13",
         period: "pm",
         reminder: ""
     },
     {
         id: "6",
         hour: "2",
-        time: "2",
+        time: "14",
         period: "pm",
         reminder: ""
     },
     {
         id: "7",
         hour: "3",
-        time: "3",
+        time: "15",
         period: "pm",
         reminder: ""
     },
     {
         id: "8",
         hour: "4",
-        time: "4",
+        time: "16",
         period: "pm",
         reminder: ""
     },
     {
         id: "9",
         hour: "5",
-        time: "5",
+        time: "17",
         period: "pm",
         reminder: ""
     },
@@ -120,7 +120,9 @@ var plannerTime = function(){
             $( this ).removeClass( "present past" ).addClass( "future" );        }
     })
 };
+plannerTime();
 
+console.log(moment().hour());;
 
 
 });

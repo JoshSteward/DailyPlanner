@@ -75,7 +75,7 @@ var myPlanner = [
 function saveData(){
     localStorage.setItem("myPlanner", JSON.stringify("myPlanner"));
 }
-console.log(saveData);
+console.log(myPlanner);
 
 //display saved events in local storage 
 function  displayEvents() {
@@ -95,28 +95,32 @@ function storedData(){
     displayEvents();
 }
 
-
-
-
-
-
-
-
-//load previous data saved locally 
-$(function(){
-    loadData();
-
-    function loadData(){
-
-    }
-
-});
-
-//save data locally when button is pressed 
-$("#submit").on("click", function(){
-    
-
+//save data to local storage 
+$(".saveBtn").on("click", function(event) {
+    event.preventDefault();
+    var saveIndex = $(this).siblings(".description").children(".future").attr("id");
+    myPlanner[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+    console.log(saveIndex);
+    saveData();
+    displayEvents();
 })
-var n=$("inputArea").val();
+
+//create function that changes colour of planner based on if it's past present or future
+var plannerTime = function(){
+    var currentHour = moment().hour();
+    $(".time").each(function(){
+
+        var elementHour = parseInt($(this).attr("id"));
+
+        if (elementHour < currentHour) {
+            $( this ).removeClass( "present future" ).addClass( "past" );        }
+        else if (elementHour === currentHour) {
+            $( this ).removeClass( "past future" ).addClass( "present" );        }
+        else {
+            $( this ).removeClass( "present past" ).addClass( "future" );        }
+    })
+};
+
+
 
 });

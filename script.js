@@ -8,63 +8,63 @@ console.log(dateNow);
 //create variables to store and loop through schedule 
 var myPlanner = [
     {
-        id: "0",
+        id: "9",
         hour: "9",
         time: "9",
         period: "am",
         reminder: ""
     },
     {
-        id: "1",
+        id: "10",
         hour: "10",
         time: "10",
         period: "am",
         reminder: ""
     },
     {
-        id: "3",
+        id: "11",
         hour: "11",
         time: "11",
         period: "am",
         reminder: ""
     },
     {
-        id: "4",
+        id: "12",
         hour: "12",
         time: "12",
         period: "pm",
         reminder: ""
     },
     {
-        id: "5",
+        id: "13",
         hour: "1",
         time: "13",
         period: "pm",
         reminder: ""
     },
     {
-        id: "6",
+        id: "14",
         hour: "2",
         time: "14",
         period: "pm",
         reminder: ""
     },
     {
-        id: "7",
+        id: "15",
         hour: "3",
         time: "15",
         period: "pm",
         reminder: ""
     },
     {
-        id: "8",
+        id: "16",
         hour: "4",
         time: "16",
         period: "pm",
         reminder: ""
     },
     {
-        id: "9",
+        id: "17",
         hour: "5",
         time: "17",
         period: "pm",
@@ -98,8 +98,8 @@ function storedData(){
 //save data to local storage 
 $(".submitBtn").on("click", function(event) {
     event.preventDefault();
-    var saveIndex = $(this).siblings(".input").children(".future").attr("id");
-    myPlanner[saveIndex].reminder = $(this).siblings(".input").children(".future").val();
+    var saveIndex = $(this).parents(".time").children(".future").attr("id");
+    myPlanner[saveIndex].reminder = $(this).parents(".time").children(".future").val();
     console.log(saveIndex);
     saveData();
     displayEvents();

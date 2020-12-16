@@ -4,6 +4,7 @@ $(document).ready(function (){
 var dateNow = moment().format('dddd, MMMM Do');
 $("#currentDay").text(dateNow);
 console.log(dateNow); 
+var inputInput = document.querySelector(".input");
 
 //create variables to store and loop through schedule 
 var myPlanner = [
@@ -12,82 +13,82 @@ var myPlanner = [
         hour: "9",
         time: "9",
         period: "am",
-        reminder: ""
+        input: ""
     },
     {
         id: "10",
         hour: "10",
         time: "10",
         period: "am",
-        reminder: ""
+        input: ""
     },
     {
         id: "11",
         hour: "11",
         time: "11",
         period: "am",
-        reminder: ""
+        input: ""
     },
     {
         id: "12",
         hour: "12",
         time: "12",
         period: "pm",
-        reminder: ""
+        input: ""
     },
     {
         id: "13",
         hour: "1",
         time: "13",
         period: "pm",
-        reminder: ""
+        input: ""
     },
     {
         id: "14",
         hour: "2",
         time: "14",
         period: "pm",
-        reminder: ""
+        input: ""
     },
     {
         id: "15",
         hour: "3",
         time: "15",
         period: "pm",
-        reminder: ""
+        input: ""
     },
     {
         id: "16",
         hour: "4",
         time: "16",
         period: "pm",
-        reminder: ""
+        input: ""
     },
     {
         id: "17",
         hour: "5",
         time: "17",
         period: "pm",
-        reminder: ""
+        input: ""
     },
 ]
 //save data to local storage
 function saveData(){
-    localStorage.setItem("myPlanner", JSON.stringify(myPlanner));
+    localStorage.setItem("myPlanner", JSON.stringify("myPlanner"));
 }
 console.log(myPlanner);
 
 //display saved events in local storage 
 function  displayEvents() {
     myPlanner.forEach(function(_thisHour){
-        $('#${_thisHour.id}').val(_thisHour.reminder);
+        console.log(myPlanner.reminder);
     })
 
 }
 
 //set any existing data to screen 
 function storedData(){
-    var storedInfo = JSON.parse(localStorage.getItem(myPlanner));
+    var storedInfo = JSON.parse(localStorage.getItem("myPlanner"));
     if (storedInfo) {
         myplanner = storedInfo;
     }
@@ -97,10 +98,13 @@ function storedData(){
 
 //save data to local storage 
 $(".submitBtn").on("click", function(event) {
+    localStorage.setItem("myPlanner", JSON.stringify(myPlanner));
     event.preventDefault();
-    var saveIndex = $(this).parents(".time").children(".future").attr("id");
-    myPlanner[saveIndex].reminder = $(this).parents(".time").children(".future").val();
-    console.log(saveIndex);
+    var saveIndex = inputInput.value.trim();
+    if (saveIndex === ""){
+        myPlanner.reminder === saveIndex;
+    }
+    console.log(myPlanner.reminder);
     saveData();
     displayEvents();
 })
@@ -108,7 +112,7 @@ $(".submitBtn").on("click", function(event) {
 //create function that changes colour of planner based on if it's past present or future
 var plannerTime = function(){
     var currentHour = moment().hour();
-    $(".time").each(function(){
+    $(".time-block").each(function(){
 
         var elementHour = parseInt($(this).attr("id"));
 
@@ -126,3 +130,7 @@ console.log(moment().hour());;
 
 
 });
+
+
+//var saveIndex = $(this).parents(".time-block").attr("id"); //.children(".future")
+   // myPlanner[saveIndex].reminder = $(this).parents(".time-block").val(); //.children(".future")

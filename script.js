@@ -33,9 +33,10 @@ setPlanner();
 $(".submitBtn").on("click", function(event) {
     //localStorage.setItem("myPlanner", JSON.stringify(myPlanner));
     //event.preventDefault();
-    var time = $(this).parent().attr("id");
+    var time = $(this).parent().parent().attr("id");
     var input = $(this).siblings(".input").val();
     console.log(input);
+    console.log(time);
 
     localStorage.setItem(time, input);
 })
@@ -58,6 +59,18 @@ var plannerTime = function(){
 plannerTime();
 
 console.log(moment().hour());;
+
+$("#inputArea9").val(localStorage.getItem("9"))
+$("#inputArea10").val(localStorage.getItem("10"))
+$("#inputArea11").val(localStorage.getItem("11"))
+$("#inputArea12").val(localStorage.getItem("12"))
+$("#inputArea13").val(localStorage.getItem("13"))
+$("#inputArea14").val(localStorage.getItem("14"))
+$("#inputArea15").val(localStorage.getItem("15"))
+$("#inputArea16").val(localStorage.getItem("16"))
+$("#inputArea17").val(localStorage.getItem("17"))
+
+
 
 
 });

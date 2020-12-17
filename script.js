@@ -4,7 +4,9 @@ $(document).ready(function (){
 var dateNow = moment().format('dddd, MMMM Do');
 $("#currentDay").text(dateNow);
 console.log(dateNow); 
-var inputInput = document.querySelector(".input");
+//turns node list into an array using a spread operator 
+// var inputInput = [...document.querySelectorAll('.input')];
+// console.log(inputInput);
 
 //create variables to store and loop through schedule 
 var myPlanner = [
@@ -74,37 +76,47 @@ var myPlanner = [
 ]
 //save data to local storage
 function saveData(){
-    localStorage.setItem("myPlanner", JSON.stringify("myPlanner"));
+    //var saveIndex = inputInput.value.trim();
+    //if (saveIndex === ""){
+    //    this.input === saveIndex;
+    //}
+    var inputInput = document.querySelectorAll('.input');
+    console.log(inputInput);
+    inputInput.forEach(function(textArea){
+        console.log(textArea);
+        })
+    localStorage.setItem("myPlanner", JSON.stringify(myPlanner));
+    console.log(this.input);
 }
 console.log(myPlanner);
 
 //display saved events in local storage 
 function  displayEvents() {
+    var index = 0;
     myPlanner.forEach(function(_thisHour){
-        console.log(myPlanner.reminder);
+        //console.log(_thisHour);
+        //console.log(myPlanner[index]);
+       // _thisHour = myPlanner[index];
+        index++;
     })
 
 }
 
 //set any existing data to screen 
-function storedData(){
-    var storedInfo = JSON.parse(localStorage.getItem("myPlanner"));
-    if (storedInfo) {
-        myplanner = storedInfo;
-    }
-    saveData();
-    displayEvents();
-}
+//function storedData(){
+   // var storedInfo = JSON.parse(localStorage.getItem("myPlanner"));
+    //if (storedInfo) {
+    //    my{lanner = storedInfo;
+//}
+    //saveData();
+    //displayEvents();
+//}
 
 //save data to local storage 
 $(".submitBtn").on("click", function(event) {
-    localStorage.setItem("myPlanner", JSON.stringify(myPlanner));
+    //localStorage.setItem("myPlanner", JSON.stringify(myPlanner));
     event.preventDefault();
-    var saveIndex = inputInput.value.trim();
-    if (saveIndex === ""){
-        myPlanner.reminder === saveIndex;
-    }
-    console.log(myPlanner.reminder);
+    console.log($(this).siblings()[2]);
     saveData();
     displayEvents();
 })
